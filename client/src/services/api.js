@@ -1,9 +1,35 @@
-// import axios from "axios";
+import axios from "axios";
 
 // const API = axios.create({
 //   baseURL: "http://localhost:5000/api"
 // });
 
+// const API = axios.create({
+//   baseURL: "https://gymbuddy-backend-smug.onrender.com/api"
+// });
+
+const API = axios.create({
+  baseURL: `${process.env.REACT_APP_API_BASE_URL}/api`
+});
+
+API.interceptors.request.use((req) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    req.headers.Authorization = `Bearer ${token}`;
+  }
+  return req;
+});
+
+export default API;
+
+
+// import axios from "axios";
+
+// const API = axios.create({
+//   baseURL: `${import.meta.env.VITE_API_BASE_URL}/api`,
+// });
+
+// // Attach token automatically
 // API.interceptors.request.use((req) => {
 //   const token = localStorage.getItem("token");
 //   if (token) {
@@ -15,19 +41,19 @@
 // export default API;
 
 
-import axios from "axios";
+// import axios from "axios";
 
-const API = axios.create({
-  baseURL: `${import.meta.env.VITE_API_BASE_URL}/api`,
-});
+// const API = axios.create({
+//   baseURL: `${process.env.REACT_APP_API_BASE_URL}/api`,
+// });
 
-// Attach token automatically
-API.interceptors.request.use((req) => {
-  const token = localStorage.getItem("token");
-  if (token) {
-    req.headers.Authorization = `Bearer ${token}`;
-  }
-  return req;
-});
+// // Attach token automatically
+// API.interceptors.request.use((req) => {
+//   const token = localStorage.getItem("token");
+//   if (token) {
+//     req.headers.Authorization = `Bearer ${token}`;
+//   }
+//   return req;
+// });
 
-export default API;
+// export default API;
