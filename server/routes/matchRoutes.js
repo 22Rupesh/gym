@@ -1,14 +1,3 @@
-// const express = require("express");
-// const router = express.Router();
-// const auth = require("../middleware/authMiddleware");
-// const { findGymBuddies } = require("../controllers/matchController");
-
-// router.get("/find", auth, findGymBuddies);
-
-// module.exports = router;
-
-
-
 const express = require("express");
 const auth = require("../middleware/authMiddleware");
 const {
